@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <wiringPi.h>
 
-const int LED_PIN = 8;
-const int BUTTON_PIN = 9;
+const int LED_PIN = 2;
+const int BUTTON_PIN = 3;
 
 void flash(int num_flashes) {
   int i;
@@ -16,7 +16,8 @@ void flash(int num_flashes) {
 
 int main(void) {
 
-  wiringPiSetup();
+  //Use Broadcom numbering
+  wiringPiSetupGpio();
 
   pinMode(LED_PIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT);
@@ -24,10 +25,7 @@ int main(void) {
 
   digitalWrite(LED_PIN, LOW);
 
-  while(1) {
-    if (digitalRead(BUTTON_PIN) == 0) {
-      flash(4);
-    }
-  }
+  wiringPiISR(BUTTON_PIN, 0,); 
+
   return 0;
 }
