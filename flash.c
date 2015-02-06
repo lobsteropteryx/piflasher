@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <unistd.h>
 #include <wiringPi.h>
 
 const int LED_PIN = 2;
@@ -14,6 +14,10 @@ void flash(int num_flashes) {
   }
 }
 
+void handle_interrupt(void) {
+    flash(4);
+}
+
 int main(void) {
 
   //Use Broadcom numbering
@@ -25,7 +29,11 @@ int main(void) {
 
   digitalWrite(LED_PIN, LOW);
 
-  wiringPiISR(BUTTON_PIN, 0,); 
+  wiringPiISR(BUTTON_PIN, INT_EDGE_FALLING, &handle_interrupt);
+
+  while (1) {
+    sleep(1);
+  }
 
   return 0;
 }
