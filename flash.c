@@ -25,11 +25,13 @@ int main(void) {
   wiringPiISR(BUTTON_PIN, INT_EDGE_FALLING, &handle_button_press);
   signal(SIGINT, handle_SIGINT);
 
+  printf("Waiting for button presses. (Ctrl+C to exit.)\n");
   while (KEEP_RUNNING) {
     sleep(1);
   }
 
   cleanup();
+  printf("SEE YOU SPACE COWBOY.\n");
   return 0;
 }
 
@@ -44,6 +46,7 @@ void setup(void) {
 
 
 void handle_button_press(void) {
+  printf("Received button press.\n");
   flash_led(4);
 }
 
@@ -60,6 +63,7 @@ void flash_led(int num_flashes) {
 
 
 void handle_SIGINT(int signal) {
+  printf("\nInterrupt caught. Shutting down.\n");
   KEEP_RUNNING = false;
 }
 
