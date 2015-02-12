@@ -8,7 +8,6 @@
 // Broadcom numbering
 const int LED_PIN = 2;
 const int BUTTON_PIN = 3;
-
 static bool KEEP_RUNNING = true;
 
 
