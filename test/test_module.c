@@ -1,5 +1,4 @@
-#include "unity_fixture.h"
-#include test_module.h"
+#include "test_module.h"
 
 TEST_GROUP(module);
 
@@ -11,6 +10,6 @@ TEST_TEAR_DOWN(module) {
 
 }
 
-TEST(module, DoNothing) {
+TEST(module, dummyTest) {
 	TEST_ASSERT_EQUAL(2, dummyFunction(2));
 }
