@@ -21,8 +21,8 @@ int main(void) {
   printf("This battlestation is fully operational.\n");
 
   while (1) {
-    sleep(500);
-    serialPuts(fd, "Sending out an S.O.S. to the world.");
+    delay(500);
+    serialPrintf(fd, "Sending out an S.O.S. to the world.");
   }
 
   return 0;
