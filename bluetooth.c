@@ -15,6 +15,7 @@ int main(void) {
       "Unable to open serial device: %s\n",
       strerror(errno)
     );
+  
     return 1;
   }
 

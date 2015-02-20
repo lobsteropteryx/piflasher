@@ -1,2 +1,1 @@
-gcc -o flash flash.c -l wiringPi
-gcc -o bluetooth bluetooth.c -l wiringPi
+gcc main.c flash.c button.c -o piflasher -l wiringPi
