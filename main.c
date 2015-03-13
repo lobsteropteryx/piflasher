@@ -1,6 +1,7 @@
 #include <signal.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
 
@@ -59,8 +60,13 @@ void setup(void) {
 
 
 void respond_to_data(int num_bytes_available) {
+  char *buffer = NULL;
+  buffer = malloc(sizeof(char) * (num_bytes_available + 1));
+  read(fd, buffer, num_bytes_available);
+  printf(buffer);
+  fflush(stdout);
+  free(buffer);
   flash_led(LED_PIN, num_bytes_available);
-  printf("Received %d bytes of data!", num_bytes_available);
 }
 
 
@@ -70,7 +76,7 @@ int main(void) {
   setup();
   printf("This battle station is fully operational.\n");
   while(KEEP_RUNNING) {
-    /*sleep(1);*/
+    sleep(1);
     num_bytes_available = serialDataAvail(fd);
     if (num_bytes_available > 0) {
       respond_to_data(num_bytes_available);
