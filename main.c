@@ -5,6 +5,7 @@
 #include <errno.h>
 
 #include <wiringPi.h>
+#include <wiringSerial.h>
 #include "flash.h"
 #include "button.h"
 #include "bluetooth.h"
@@ -57,11 +58,26 @@ void setup(void) {
 }
 
 
+void respond_to_data(int num_bytes_available) {
+  flash_led(LED_PIN, num_bytes_available);
+  printf("Received %d bytes of data!", num_bytes_available);
+}
+
+
 int main(void) {
+  int num_bytes_available;
+
   setup();
   printf("This battle station is fully operational.\n");
   while(KEEP_RUNNING) {
-    sleep(1);
+    /*sleep(1);*/
+    num_bytes_available = serialDataAvail(fd);
+    if (num_bytes_available > 0) {
+      respond_to_data(num_bytes_available);
+    }
+    else if (num_bytes_available == -1) {
+      fprintf(stderr, "Error reading bytes off of serial device: %s\n", strerror(errno));
+    }
   }
   cleanup();
   printf("SEE YOU, SPACE COWBOY.\n");
