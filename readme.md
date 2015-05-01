@@ -6,7 +6,7 @@ The code and schematics here are a demonstration of some of the common functiona
 - Reading and writing over the hardware USART
 - And of course, flashing an LED!
 
-This program is written in C and compiled using [gcc](http://gcc.gnu.org).  The program is broken into modules, roughly corresponding to individual hardware functions.
+This program is written in C and compiled using [gcc](http://gcc.gnu.org).  The program is broken into modules, roughly corresponding to individual hardware functions.  The hardware interfacing is done via the [wiringpi](http://www.wiringpi.com) library, which maps Arduino wiring commands onto the Pi.  It's easy to build directly on the Pi, following the [guide](http://www.wiringpi.com/download-and-install).
 
 #Bill of Materials
 - [Raspberry Pi B+](https://raspberrypi.org/products/model-b-plus)
