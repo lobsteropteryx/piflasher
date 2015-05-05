@@ -18,6 +18,4 @@ This program is written in C and compiled using [gcc](http://gcc.gnu.org).  The 
 The Pi itself is powerered from a standard USB supply, and the 5V rail from the GPIO header is used to power the HC-06.
 
 #Schematic
-![schematic](https://github.com/lobsteropteryx/piflasher/blob/master/piflasher.schematic.svg)
-
-
+![schematic](https://cdn.rawgit.com/lobsteropteryx/piflasher/master/piflasher.schematic.svg)
